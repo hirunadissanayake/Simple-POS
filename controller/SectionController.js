@@ -45,3 +45,6 @@ function orderHistoryManage(){
     $("#order_detail").hide();
     $("#order_history").show();
 }
+
+
+
