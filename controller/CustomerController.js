@@ -82,14 +82,14 @@ $('#customer_save').on('click', function () {
 });
 
 
-// update customer
-$(`#customer_update`).on('click',function (){
-    let id = $(`#customer_id`).val();
-    let fname = $(`#first_name`).val();
-    let lname = $(`#last_name`).val();
-    let email = $(`#email`).val();
-    let phone = $(`#phone`).val();
-    let address = $(`#address`).val();
+// Update customer
+$('#customer_update').on('click', function () {
+    let id = $('#customer_id').val();
+    let fname = $('#first_name').val();
+    let lname = $('#last_name').val();
+    let email = $('#email').val();
+    let phone = $('#phone').val();
+    let address = $('#address').val();
 
     if (fname === '' || lname === '' || email === '' || phone === '' || address === '') {
         Swal.fire({
@@ -97,7 +97,7 @@ $(`#customer_update`).on('click',function (){
             title: "Error!",
             text: "Please enter valid inputs..!"
         });
-    }else if (selectedCustomerIndex !== -1){
+    } else if (selectedCustomerIndex !== -1) {
 
         customer_db[selectedCustomerIndex] = {
             id: id,
@@ -108,33 +108,23 @@ $(`#customer_update`).on('click',function (){
             address: address
         };
 
-        loadCustomer();
+        loadCustomerTable();
         console.log(customer_db);
 
         Swal.fire({
             title: "Customer updated successfully..!",
-            icon: "success",
-            draggable: true
+            icon: "success"
         });
 
-        $('#first_name').val("");
-        $('#last_name').val("");
-        $('#email').val("");
-        $('#phone').val("");
-        $('#address').val("");
-
-        //rest form and index
-        $(`#customer_reset`).click();
-
-
+        $('#customer_reset').click();
 
     } else {
-    Swal.fire({
-        icon: "warning",
-        title: "No customer selected!",
-        text: "Please select a customer to update."
-    });
-}
+        Swal.fire({
+            icon: "warning",
+            title: "No customer selected!",
+            text: "Please select a customer to update."
+        });
+    }
 });
 
 //Reset form
@@ -148,7 +138,7 @@ $(`#customer_reset`).on('click',function (){
     $('#address').val("");
 });
 
-//Delete Customer
+// Delete Customer
 let selectedCustomerIndex = -1; // declare globally if not yet
 
 $('#customer_delete').on('click', function () {
@@ -157,7 +147,7 @@ $('#customer_delete').on('click', function () {
         customer_db.splice(selectedCustomerIndex, 1);
 
         // Reload the updated customer list into the table
-        loadCustomer();
+        loadCustomerTable();  // <-- fixed this line ✅
 
         // Show a success alert
         Swal.fire({
@@ -190,20 +180,20 @@ $('#customer_delete').on('click', function () {
 
 
 
+
 // select a customer by clicking on a table row
-$(`#customer_table`).on('click', 'tr', function () {
-    const selectedCustomerIndex = $(this).index();
+$('#customer_table').on('click', 'tr', function () {
+    selectedCustomerIndex = $(this).index();  // <-- fixed this line
     const selectedCustomer = customer_db[selectedCustomerIndex];
 
-    // Fill the form with the selected customer's data
     $('#customer_id').val(selectedCustomer.id);
     $('#first_name').val(selectedCustomer.fname);
     $('#last_name').val(selectedCustomer.lname);
     $('#email').val(selectedCustomer.email);
     $('#phone').val(selectedCustomer.phone);
     $('#address').val(selectedCustomer.address);
-
 });
+
 
 //search by email
 $('#searchButton').on('click', function (e) {

@@ -179,7 +179,7 @@
                 </div>
                 <div class="col-md-4">
                   <div class="d-grid">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="item-search">
                       <i class="bi bi-search me-2"></i>Search
                     </button>
                   </div>
@@ -233,13 +233,13 @@
                 <!-- Action Buttons -->
                 <div class="action-buttons d-flex justify-content-end gap-2">
                   <button type="button" class="btn btn-outline-secondary">Cancel</button>
-                  <button type="button" class="btn btn-success">
+                  <button type="button" class="btn btn-success" id="item-register">
                     <i class="bi bi-person-plus me-1"></i>Register
                   </button>
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-primary" id="item-update">
                     <i class="bi bi-pencil me-1"></i>Update
                   </button>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" class="btn btn-danger" id="item-delete">
                     <i class="bi bi-trash me-1"></i>Delete
                   </button>
                 </div>
@@ -450,5 +450,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="controller/SectionController.js"></script>
 <script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
 </body>
 </html>
